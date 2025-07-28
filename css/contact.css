@@ -78,3 +78,16 @@ textarea::placeholder {
     font-size: 20px;
     color: #FFFFFF;
 }
+
+/* 모바일: 세로 배치 */
+@media screen and (max-width: 767px) {
+    .contact {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+        gap: 40px;
+    }
+}
