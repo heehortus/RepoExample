@@ -6,11 +6,16 @@
     gap: 60px;
 }
 
-input {
+/* input, textarea 스타일 초기화 (Chrome, Safari 동기화) */
+input,
+textarea {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     margin: 0;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
 }
 
 .contactName {
