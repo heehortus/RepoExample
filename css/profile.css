@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    align-items: flex-start;
+    gap: 113px;
+}
+
+.profile {
+    width: 422px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 34px;
+    align-self: stretch;
+}
+
+.profileWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.profileName {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.profileLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+}
+
+.linkTitle {
+    font-family: 'Pretendard-SemiBold', sans-serif;
+    font-size: 30px;
+}
+
+.linkItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.contactName {
+    color: #A1AD7F;
+}
