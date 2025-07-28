@@ -1,7 +1,19 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .container {
     display: flex;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
     gap: 113px;
+
+    border-radius: 20px;
+    background: linear-gradient(186deg, #FFF 6.83%, #FFFFA4 95.53%);
 }
 
 .profile {
