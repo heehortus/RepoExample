@@ -14,10 +14,10 @@
     <script type="text/javascript">
         const form = document.querySelectorD('contactForm');
         const submitButton = document.querySelector('#send');
-        const sendMail = (e) => {
+        function sendMail() {
             e.preventDefault(); // 폼 제출 방지
 
-            emailjs.sendForm('service_2cnxu27', 'template_wz4du7l', form, {
+            emailjs.sendForm('service_2cnxu27', 'ContactUs', form, {
             publicKey: 'qcTpKKgfnya6vZp22',
             })
             .then(
