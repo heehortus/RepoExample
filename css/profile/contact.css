@@ -69,6 +69,11 @@ form textarea {
     font-size: 20px;
 }
 
+.contactMessage {
+    max-height: 300px;
+    resize: none;
+}
+
 input::placeholder,
 textarea::placeholder {
     color: #000000;

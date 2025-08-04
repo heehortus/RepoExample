@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Repo Example</title>
-    <link rel="stylesheet" href="../css/font.css">
-    <link rel="stylesheet" href="../css/picture.css">
-    <link rel="stylesheet" href="../css/profile.css">
-    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="stylesheet" href="../css/profile/font.css">
+    <link rel="stylesheet" href="../css/profile/picture.css">
+    <link rel="stylesheet" href="../css/profile/profile.css">
+    <link rel="stylesheet" href="../css/profile/contact.css">
     <script src="../js/sendButton.js" defer></script>
 </head>
 
@@ -55,7 +55,7 @@
                 <span class="contactInput">
                     <input type="text" class="contactTitle" placeholder="Name" required>
                     <input type="email" class="contactEmail" placeholder="Email" required>
-                    <textarea class="contactMessage" placeholder="Message" required></textarea>
+                    <textarea class="contactMessage" placeholder="Message" rows="1" required oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></textarea>
                 </span>
                 <button type="submit" class="contactButton" onclick=btnClick();>SEND</button>
             </form>
