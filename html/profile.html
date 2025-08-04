@@ -18,16 +18,16 @@
             e.preventDefault(); // 폼 제출 방지
 
             emailjs.sendForm('service_2cnxu27', 'template_wz4du7l', form, {
-                publicKey: 'qcTpKKgfnya6vZp22',
+            publicKey: 'qcTpKKgfnya6vZp22',
             })
-                .then(
-                    () => {
-                        alert(`${form.name.value}님, 메일 전송에 성공했습니다 :)`);
-                    },
-                    (error) => {
-                        alert(`${form.name.value}님, 메일 전송에 실패했습니다 :(`);
-                    },
-                );
+            .then(
+                () => {
+                    alert(`${form.name.value}님, 메일 전송에 성공했습니다 :)`);
+                },
+                (error) => {
+                    alert(`${form.name.value}님, 메일 전송에 실패했습니다 :(`);
+                },
+            );
         };
         submitButton.addEventListener('click', sendMail);
     </script>
@@ -85,7 +85,7 @@
                     <textarea class="contactMessage" placeholder="Message" name="message" rows="1" required
                         oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></textarea>
                 </span>
-                <button type="submit" class="contactButton" id="send">SEND</button>
+                <button type="submit" class="contactButton" id="send" onclick="sendMail()">SEND</button>
             </form>
         </section>
     </div>
