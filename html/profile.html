@@ -5,14 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Repo Example</title>
-    <link rel="stylesheet" href="../css/profile/font.css">
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/nav.css">
     <link rel="stylesheet" href="../css/profile/picture.css">
     <link rel="stylesheet" href="../css/profile/profile.css">
     <link rel="stylesheet" href="../css/profile/contact.css">
-    <script src="../js/sendButton.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        const form = document.querySelectorD('contactForm');
+        const submitButton = document.querySelector('#send');
+        const sendMail = (e) => {
+            e.preventDefault(); // 폼 제출 방지
+
+            emailjs.sendForm('service_2cnxu27', 'template_wz4du7l', form, {
+                publicKey: 'qcTpKKgfnya6vZp22',
+            })
+                .then(
+                    () => {
+                        alert(`${form.name.value}님, 메일 전송에 성공했습니다 :)`);
+                    },
+                    (error) => {
+                        alert(`${form.name.value}님, 메일 전송에 실패했습니다 :(`);
+                    },
+                );
+        };
+        submitButton.addEventListener('click', sendMail);
+    </script>
 </head>
 
 <body>
+    <nav class="main-nav">
+        <div class="nav-wrapper">
+            <a href="project.html" class="nav-link">Project</a>
+            <a href="profile.html" class="nav-link active">About</a>
+        </div>
+    </nav>
     <div class="container">
         <section class="profile">
             <h1>안녕하세요! 정희원입니다.</h1>
@@ -48,16 +75,17 @@
         </section>
         <section class="contact">
             <div class="contactWrapper">
-                <h2 class="contactName">Contact Me</h2>
+                <h2 class="contactTitle">Contact Me</h2>
                 <p class="contactSubtitle">궁금한 점이나 협업 제안이 있다면 언제든지 연락주세요!</p>
             </div>
             <form id="contactForm">
                 <span class="contactInput">
-                    <input type="text" class="contactTitle" placeholder="Name" required>
-                    <input type="email" class="contactEmail" placeholder="Email" required>
-                    <textarea class="contactMessage" placeholder="Message" rows="1" required oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></textarea>
+                    <input type="text" class="contactName" placeholder="Name" name="name" required>
+                    <input type="email" class="contactEmail" placeholder="Email" name="email" required>
+                    <textarea class="contactMessage" placeholder="Message" name="message" rows="1" required
+                        oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></textarea>
                 </span>
-                <button type="submit" class="contactButton" onclick=btnClick();>SEND</button>
+                <button type="submit" class="contactButton" id="send">SEND</button>
             </form>
         </section>
     </div>

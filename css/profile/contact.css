@@ -1,6 +1,6 @@
 .contact {
     display: flex;
-    width: 724px;
+    width: 600px;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -45,7 +45,7 @@ form textarea {
     gap: 8px;
 }
 
-.contactName {
+.contactTitle {
     align-self: stretch;
     color: #A1AD7F;
 }
@@ -54,7 +54,7 @@ form textarea {
     align-self: stretch;
 }
 
-.contactTitle,
+.contactName,
 .contactEmail,
 .contactMessage {
     align-self: stretch;
