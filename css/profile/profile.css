@@ -73,7 +73,7 @@ body {
     }
 
     .container {
-        width: 600px;
+        width: 400px;
         display: flex;
         justify-content: center;
         /* 플렉스 디렉션 row -> column*/
