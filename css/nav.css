@@ -11,7 +11,7 @@
 }
 
 .nav-wrapper {
-    width: 1350px; /* 콘텐츠 박스 너비와 맞추기 */
+    width: 1400px; /* 콘텐츠 박스 너비와 맞추기 */
     margin: 0 auto;
     height: 100%;
     display: flex;
