@@ -45,7 +45,7 @@ form textarea {
     gap: 8px;
 }
 
-.contactTitle {
+.contactName {
     align-self: stretch;
     color: #A1AD7F;
 }
@@ -54,7 +54,7 @@ form textarea {
     align-self: stretch;
 }
 
-.contactName,
+.contactTitle,
 .contactEmail,
 .contactMessage {
     align-self: stretch;
