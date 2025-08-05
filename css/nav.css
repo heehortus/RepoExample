@@ -27,7 +27,8 @@
     font-size: 30px;
     font-weight: 400;
     position: relative;
-    padding: 10px 15px; /* 클릭 영역 확대 */
+    /* 클릭 영역 확대 */
+    padding: 10px 15px; 
 }
 
 .nav-link.active::after {
@@ -38,6 +39,7 @@
     right: 15px;
     height: 3px;
     background-color: #000;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 @media screen and (max-width: 767px) {
