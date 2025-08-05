@@ -4,45 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repo Example</title>
+    <title>HORTUS</title>
+    <!-- 공통 CSS -->
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/cursor.css">
     <link rel="stylesheet" href="../css/font.css">
     <link rel="stylesheet" href="../css/nav.css">
+    <!-- 개별 CSS -->
     <link rel="stylesheet" href="../css/profile/picture.css">
     <link rel="stylesheet" href="../css/profile/profile.css">
     <link rel="stylesheet" href="../css/profile/contact.css">
+    <!-- 공통 JS-->
+    <script src="../js/cursor.js"></script>
+    <!-- 메일 전송 라이브러리-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
-        const form = document.querySelector('contactForm');
-        const submitButton = document.querySelector('#send');
-        function sendMail() {
-            e.preventDefault(); // 폼 제출 방지
+        (function () {
+            // emailJS 유저 ID
+            emailjs.init("qcTpKKgfnya6vZp22");
+        })();
+    </script>
+    <script type="text/javascript">
+        function sendEmail(e) {
+            e.preventDefault(); // 기본 동작 방지
+            // 폼 요소 가져오기
+            const form = document.getElementById('contactForm');
 
-            emailjs.sendForm('service_2cnxu27', 'ContactUs', form, {
-            publicKey: 'qcTpKKgfnya6vZp22',
-            })
-            .then(
-                () => {
-                    alert(`${form.name.value}님, 메일 전송에 성공했습니다 :)`);
-                },
-                (error) => {
-                    alert(`${form.name.value}님, 메일 전송에 실패했습니다 :(`);
-                },
-            );
-        };
-        submitButton.addEventListener('click', sendMail);
+            emailjs.sendForm('service_2cnxu27', 'ContactUs', form)
+                .then(() => {
+                    console.log('SUCCESS!');
+                    alert('메일이 성공적으로 전송되었습니다!'); // 성공 메시지
+                    form.reset();
+                }, (error) => {
+                    console.log('FAILED...', error);
+                    alert('메일 전송에 실패했습니다.'); // 실패 메시지
+                });
+        }
     </script>
 </head>
 
 <body>
+    <div class="custom-cursor" id="cursor"></div>
     <nav class="main-nav">
         <div class="nav-wrapper">
-            <a href="project.html" class="nav-link">Project</a>
-            <a href="profile.html" class="nav-link active">About</a>
+            <div class="logo">
+                <a href="" class="nav-home">Hortus</a>
+            </div>
+            <div class="menu">
+                <a href="project.html" class="nav-link">Project</a>
+                <a href="profile.html" class="nav-link active">About</a>
+            </div>
         </div>
     </nav>
     <div class="container">
         <section class="profile">
-            <h1>안녕하세요! 정희원입니다.</h1>
+            <h1 class="title">안녕하세요! 정희원입니다.</h1>
             <div class="profileFrame">
                 <img src="../source/img/profile.jpg" alt="Profile Picture" class="profileImage">
             </div>
@@ -80,14 +96,14 @@
                 <h2 class="contactName">Contact Me</h2>
                 <p class="contactSubtitle">궁금한 점이나 협업 제안이 있다면 언제든지 연락주세요!</p>
             </div>
-            <form id="contactForm">
+            <form id="contactForm" onsubmit="sendEmail(event)">
                 <span class="contactInput">
                     <input type="text" class="contactTitle" placeholder="Name" name="name" required>
                     <input type="email" class="contactEmail" placeholder="Email" name="email" required>
                     <textarea class="contactMessage" placeholder="Message" name="message" rows="1" required
                         oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></textarea>
                 </span>
-                <button type="submit" class="contactButton" id="send" onclick="sendMail()">SEND</button>
+                <button type="submit" class="contactButton">SEND</button>
             </form>
         </section>
     </div>

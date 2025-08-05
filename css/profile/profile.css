@@ -1,11 +1,3 @@
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgb(233, 233, 233);
-}
-
 .container {
     width: 1300px;
     display: flex;
@@ -64,74 +56,61 @@ body {
 /* 모바일: 세로 배치 */
 @media screen and (max-width: 767px) {
 
-    body {
-        height: auto;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: rgb(233, 233, 233);
-    }
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(235, 235, 235);
+    margin: 0;
+    padding: 0;
+}
 
-    .container {
-        width: 400px;
-        height: 70%;
-        display: flex;
-        justify-content: center;
-        /* 플렉스 디렉션 row -> column*/
-        flex-direction: column;
-        align-items: center;
-        margin-top: 100px;
-        gap: 113px;
-        border-radius: 20px;
-        background: #fff;
-    }
+.title {
+    display: none;
+}
 
-    .profile {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 34px;
-        align-self: stretch;
-    }
-    
-    .profileWrapper {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        gap: 20px;
-    }
+.container {
+    width: 500px; /* 고정 너비 사용 */
+    padding: 20px; /* 내부 여백 추가 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 상단부터 요소 배치 */
+    align-items: center;
+    gap: 40px; /* 섹션 간 간격 조정 */
+    border-radius: 20px;
+    background: #fff;
+    box-sizing: border-box; /* 패딩이 너비/높이에 포함되도록 설정 */
+    height: auto; /* 콘텐츠에 따라 높이 자동 조정 */
+}
 
-    .profileName {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        align-self: stretch;
-    }
+.profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
 
-    .profileLinks {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 4px;
-    }
+.profileWrapper {
+    display: flex;
+    flex-direction: row; /* 가로에서 세로로 변경하여 프로필 이미지와 텍스트를 위아래로 배치 */
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: auto;
+    align-self: stretch;
+}
 
-    .linkTitle {
-        font-size: 25px;
-    }
+.profileName {
+    text-align: center;
+}
 
-    .linkItemContainer {
-        display: flex;
-        flex-direction: column;
-    }
+.linkTitle {
+    display: none;
+}
 
-    .linkItem {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-    }
+.linkTitle {
+    font-size: 25px;
+    margin-bottom: px; /* 제목 아래 여백 추가 */
+}
 }

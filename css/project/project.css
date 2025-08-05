@@ -1,11 +1,3 @@
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: rgb(233, 233, 233);
-}
-
 .container {
     display: flex;
     width: 1300px;
@@ -27,6 +19,7 @@ body {
 }
 
 .year-tab {
+    font-family: 'Pretendard-Regular', sans-serif;
     background: none;
     border: none;
     font-size: 16px;
@@ -38,6 +31,7 @@ body {
 
 .year-tab:hover {
     color: #000;
+    transform: translateY(-2px);
 }
 
 .year-tab.active {
@@ -45,17 +39,29 @@ body {
     font-weight: 600;
 }
 
+/* 프로젝트 섹션을 감싸는 wrapper 추가 */
+.project-wrapper {
+    width: 100%;
+    height: 600px;
+    /* 고정된 높이 설정 (2줄 분량) */
+    position: relative;
+}
+
 /* 프로젝트 그리드 */
 .project-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
+    transition: opacity 0.15s ease;
+    /* min-height 제거 */
 }
 
 .project-item {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
+    height: 100%;
+    /* 프로젝트 아이템 높이 고정 */
 }
 
 .project-item:hover .overlay {
@@ -78,7 +84,6 @@ body {
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.4);
-    /* dim 효과 */
     color: white;
     display: flex;
     justify-content: flex-start;
@@ -87,4 +92,77 @@ body {
     opacity: 0;
     transition: opacity 0.3s ease;
     padding: 20px;
+}
+
+/* 페이지네이션 스타일 */
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.pagination-btn {
+    font-family: 'Pretendard-Regular', sans-serif;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    color: #666;
+}
+
+.pagination-btn:hover:not(:disabled) {
+    background: #f5f5f5;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.page-numbers {
+    display: flex;
+    gap: 8px;
+}
+
+.page-number {
+    font-family: 'Pretendard-Regular', sans-serif;
+    background: none;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    color: #666;
+}
+
+.page-number:hover {
+    background: #f5f5f5;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+.page-number.active {
+    background: #000;
+    color: #fff;
+}
+
+.page-number.active:hover {
+    background: #333;
+    transform: translateY(-2px);
 }
