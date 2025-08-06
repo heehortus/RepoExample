@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,53 +9,94 @@
     <link rel="icon" href="/source/favicon/favicon-32x32.ico" type="image/x-icon">
     <!-- 공통 CSS -->
     <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/spinner.css">
     <link rel="stylesheet" href="../css/cursor.css">
     <link rel="stylesheet" href="../css/font.css">
     <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/floatingBtn.css">
     <!-- 개별 CSS -->
+    <link rel="stylesheet" href="../css/profile/about.css">
     <link rel="stylesheet" href="../css/project/project.css">
+    
+    <!-- lottie -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script> -->
 
     <!-- 공통 JS-->
-    <script src="../js/cursor.js"></script>
-    <!-- 개별 JS-->
-    <script src="../js/project_filter.js"></script>
+    <script src="../js/cursor.js" defer></script>
+    <script src="../js/floatingBtn.js"defer ></script>
 </head>
 
 <body>
     <div class="custom-cursor" id="cursor"></div>
+    <button class="floating-btn" id="scrollBtn">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M7 13L12 18L17 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M7 6L12 11L17 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    </button> 
     <nav class="main-nav">
         <div class="nav-wrapper">
             <div class="logo">
                 <a href="about.html" class="nav-home">HORTUS</a>
             </div>
             <div class="menu">
-                    <a href="about.html" class="nav-link">About</a>
-                    <a href="project.html" class="nav-link active">Project</a>
-                    <a href="contact.html" class="nav-link">Contact</a>
+                <a href="about.html" class="nav-link active">About</a>
+                <a href="project.html" class="nav-link">Project</a>
+                <a href="contact.html" class="nav-link">Contact</a>
             </div>
         </div>
     </nav>
 
-    <div class="project-container">
-        <div class="year-tabs">
-            <button class="year-tab active" data-year="all">All</button>
-            <button class="year-tab" data-year="2025">2025</button>
-            <button class="year-tab" data-year="2024">2024</button>
-            <button class="year-tab" data-year="2023">2023</button>
-            <button class="year-tab" data-year="2022">2022</button>
-            <button class="year-tab" data-year="2021">2021</button>
-            <button class="year-tab" data-year="2020">2020</button>
-            <button class="year-tab" data-year="2019">2019</button>
-        </div>
-
+    <div class="container">
+        <section class="intro">
+            <!-- intro -->
+            <div class="intro-content">
+                <h1 class="main-title">
+                    안녕하세요,<br>
+                    디자이너 정희원입니다.
+                </h1>
+                
+                <h2 class="subtitle">Detail makes the difference</h2>
+                
+                <div class="description">
+                    <p class="desc-intro">저는 작고 사소한 불편함들을 발견하는 걸 좋아하는 디자이너입니다.</p>
+                    
+                    <div class="desc-detail">
+                        <p>앱을 쓰다가 "어? 이게 왜 이렇게?" 하고 멈칫하거나,<br>
+                        버튼을 눌렀는데 아무 반응이 없어서 당황스러웠던 경험이 모두에게 한 번쯤은 있잖아요.<br>
+                        그런 순간들을 포착하고 해결할 방법을 고민하게 됩니다.</p>
+                    </div>
+                    
+                    <div class="desc-philosophy">
+                        <p>좋은 디자인은 작은 목소리도 놓치지 않아야 한다고 생각해요.<br>
+                        사소함의 소중함을 아는 사람이 좋은 디자이너라고 생각합니다.<br>
+                        제가 생각하는 디자이너의 역할은 모든 사람들에게 친절한 디자인을 하는 사람입니다.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="background-gradient"></div>
+            <!-- animation -->
+            <!-- <div class="lottie-container" id="lottie-animation"></div> -->
+            <!-- lottie -->
+            <!-- <script>
+                const animation = lottie.loadAnimation({
+                    container: document.getElementById('lottie-animation'),
+                    renderer: 'svg',
+                    loop: true,
+                    autoplay: true,
+                    path: '../source/animation/mainAnimation.json'
+                });
+            </script> -->
+        </section>
+    </div>
+    <div class="container2">
+        <h2 class="sectionTitle">Work</h2>
         <section class="project-wrapper">
             <div class="project-grid">
                 <div class="project-item" data-year="2025">
                     <a href="https://github.com/WeCare-DeepDive">
                         <img class="project-img" src="../source/img/project1.png">
                         <div class="overlay">
-                            <div class="description">
+                            <div class="project-description">
                                 <h2>위케어</h2>
                                 <p>2025.07~2025.08 진행</p><br/>
                                 <p>기획/디자인/개발 참여 (기여도 50%)</p>
@@ -66,7 +108,7 @@
                     <a href="https://github.com/MuslingProject">
                         <img class="project-img" src="../source/img/project2.png">
                         <div class="overlay">
-                            <div class="description">
+                            <div class="project-description">
                                 <h2>Mus-ling</h2>
                                 <p>2023.03~2023.12 진행</p><br/>
                                 <p>AI 개발/디자인 참여 (기여도 40%)</p>
@@ -77,7 +119,7 @@
                 <div class="project-item" data-year="2023">
                     <img class="project-img" src="../source/img/project1.png">
                     <div class="overlay">
-                        <div class="description">
+                        <div class="project-description">
                             <h2>Project</h2>
                             <p>Content</p>
                         </div>
@@ -86,7 +128,7 @@
                 <div class="project-item" data-year="2022">
                     <img class="project-img" src="../source/img/project1.png">
                     <div class="overlay">
-                        <div class="description">
+                        <div class="project-description">
                             <h2>Project</h2>
                             <p>Content</p>
                         </div>
@@ -95,7 +137,7 @@
                 <div class="project-item" data-year="2021">
                     <img class="project-img" src="../source/img/project1.png">
                     <div class="overlay">
-                        <div class="descripttion">
+                        <div class="project-description">
                             <h2>Project</h2>
                             <p>Content</p>
                         </div>
@@ -104,7 +146,7 @@
                 <div class="project-item" data-year="2020">
                     <img class="project-img" src="../source/img/project1.png">
                     <div class="overlay">
-                        <div class="description">
+                        <div class="project-description">
                             <h2>Project</h2>
                             <p>Content</p>
                         </div>
@@ -113,7 +155,7 @@
                 <div class="project-item" data-year="2019">
                     <img class="project-img" src="../source/img/project1.png">
                     <div class="overlay">
-                        <div class="description">
+                        <div class="project-description">
                             <h2>Project</h2>
                             <p>Content</p>
                         </div>
@@ -121,14 +163,6 @@
                 </div>
             </div>
         </section>
-
-
-        <!-- 페이지네이션 -->
-        <div class="pagination">
-            <button class="pagination-btn" id="prevBtn">&lt;</button>
-            <div class="page-numbers" id="pageNumbers"></div>
-            <button class="pagination-btn" id="nextBtn">&gt;</button>
-        </div>
     </div>
 </body>
 

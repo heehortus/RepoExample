@@ -1,4 +1,4 @@
-.container {
+.project-container {
     display: flex;
     width: 1300px;
     justify-content: center;
@@ -53,7 +53,6 @@
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
     transition: opacity 0.15s ease;
-    /* min-height 제거 */
 }
 
 .project-item {
@@ -61,7 +60,6 @@
     border-radius: 10px;
     overflow: hidden;
     height: 100%;
-    /* 프로젝트 아이템 높이 고정 */
 }
 
 .project-item:hover .overlay {

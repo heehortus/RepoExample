@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const yearTabs = document.querySelectorAll('.year-tab');
     const projectItems = document.querySelectorAll('.project-item');
     const projectGrid = document.querySelector('.project-grid');
-    const container = document.querySelector('.container');
+    const container = document.querySelector('.project-container');
 
     // 페이지네이션 관련
     const itemsPerPage = 6; // 한 페이지당 6개 (2줄)

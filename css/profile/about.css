@@ -1,0 +1,289 @@
+.container {
+    width: 100%;
+    height: 1080px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.container2 {
+    width: 80%;
+    height: 1080px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 50px;
+    gap: auto;
+}
+
+.intro {
+    display:flex;
+    flex-direction: row;
+    padding-left: 100px;
+    margin-top: 150px;
+}
+
+.intro-content {
+    position: relative;
+    z-index: 3;
+    padding-left: 20px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.main-title {
+    font-family: 'Pretendard-Bold', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 40px;
+    color: #000;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-family: 'Pretendard-Medium', sans-serif;
+    font-weight: 500;
+    margin-bottom: 50px;
+    color: #333;
+    letter-spacing: -0.01em;
+}
+
+.description {
+    color: #444;
+    line-height: 1.8;
+    font-family: 'Pretendard-Regular', sans-serif;
+}
+
+.desc-intro {
+    margin-bottom: 30px;
+    font-weight: 500;
+    color: #222;
+}
+
+.desc-detail {
+    margin-bottom: 35px;
+}
+
+.desc-detail p {
+    line-height: 1.7;
+    color: #555;
+}
+
+.desc-philosophy p {
+    line-height: 1.7;
+    color: #555;
+}
+
+
+/* 애니메이션 */
+.background-gradient {
+    position: absolute;
+    top: 30%;
+    right: 100px;
+    width: 500px;
+    height: 450px;
+    z-index: 1;
+    animation: rotate 20s linear infinite;
+}
+
+.background-gradient::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 182, 193, 0.7) 0%,
+        rgba(255, 182, 193, 0.5) 40%,
+        rgba(255, 192, 203, 0.4) 70%,
+        transparent 100%
+    );
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: circle1 8s ease-in-out infinite;
+}
+
+.background-gradient::after {
+    content: '';
+    position: absolute;
+    top: 40%;
+    right: 20%;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(
+        circle at center,
+        rgba(144, 238, 144, 0.7) 0%,
+        rgba(144, 238, 144, 0.5) 40%,
+        rgba(152, 251, 152, 0.4) 70%,
+        transparent 100%
+    );
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: circle2 8s ease-in-out infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes circle1 {
+    0%, 100% {
+        transform: translate(0px, 0px) scale(1);
+        opacity: 0.8;
+    }
+    25% {
+        transform: translate(40px, -30px) scale(1.2);
+        opacity: 1;
+    }
+    50% {
+        transform: translate(-20px, 20px) scale(0.8);
+        opacity: 0.6;
+    }
+    75% {
+        transform: translate(30px, 10px) scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+@keyframes circle2 {
+    0%, 100% {
+        transform: translate(0px, 0px) scale(1);
+        opacity: 0.7;
+    }
+    25% {
+        transform: translate(-30px, 20px) scale(0.9);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translate(25px, -25px) scale(1.3);
+        opacity: 1;
+    }
+    75% {
+        transform: translate(-40px, -10px) scale(0.7);
+        opacity: 0.8;
+    }
+}
+
+
+.sectionTitle {
+    font-family: YdestreetB;
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 100px;
+}
+
+/*
+.profile {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 34px;
+}
+
+.profileWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.profileName {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+
+.profileLinks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+}
+
+.linkTitle {
+    font-family: 'Pretendard-SemiBold', sans-serif;
+    font-size: 30px;
+}
+
+.linkItem {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+*/
+/* 모바일: 세로 배치 */
+/* @media screen and (max-width: 767px) {
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgb(235, 235, 235);
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    display: none;
+}
+
+.container {
+    width: 500px;
+    padding: 20px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px;
+    border-radius: 20px;
+    background: #fff;
+    box-sizing: border-box; 
+    height: auto; 
+}
+
+.profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.profileWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: auto;
+    align-self: stretch;
+}
+
+.profileName {
+    text-align: center;
+}
+
+.linkTitle {
+    display: none;
+}
+
+.linkTitle {
+    font-size: 25px;
+    margin-bottom: px;
+}
+}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
@@ -15,34 +15,10 @@
     <!-- 개별 CSS -->
     <link rel="stylesheet" href="../css/profile/picture.css">
     <link rel="stylesheet" href="../css/profile/profile.css">
-    <link rel="stylesheet" href="../css/profile/contact.css">
     <!-- 공통 JS-->
     <script src="../js/cursor.js"></script>
     <!-- 메일 전송 라이브러리-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function () {
-            // emailJS 유저 ID
-            emailjs.init("qcTpKKgfnya6vZp22");
-        })();
-    </script>
-    <script type="text/javascript">
-        function sendEmail(e) {
-            e.preventDefault(); // 기본 동작 방지
-            // 폼 요소 가져오기
-            const form = document.getElementById('contactForm');
-
-            emailjs.sendForm('service_2cnxu27', 'ContactUs', form)
-                .then(() => {
-                    console.log('SUCCESS!');
-                    alert('메일이 성공적으로 전송되었습니다!'); // 성공 메시지
-                    form.reset();
-                }, (error) => {
-                    console.log('FAILED...', error);
-                    alert('메일 전송에 실패했습니다.'); // 실패 메시지
-                });
-        }
-    </script>
 </head>
 
 <body>
@@ -50,11 +26,12 @@
     <nav class="main-nav">
         <div class="nav-wrapper">
             <div class="logo">
-                <a href="" class="nav-home">Hortus</a>
+                <a href="about.html" class="nav-home">HORTUS</a>
             </div>
             <div class="menu">
-                <a href="project.html" class="nav-link">Project</a>
-                <a href="profile.html" class="nav-link active">About</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="project.html" class="nav-link active">Project</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
             </div>
         </div>
     </nav>
@@ -92,21 +69,6 @@
                     </a>
                 </div>
             </div>
-        </section>
-        <section class="contact">
-            <div class="contactWrapper">
-                <h2 class="contactName">Contact Me</h2>
-                <p class="contactSubtitle">궁금한 점이나 협업 제안이 있다면 언제든지 연락주세요!</p>
-            </div>
-            <form id="contactForm" onsubmit="sendEmail(event)">
-                <span class="contactInput">
-                    <input type="text" class="contactTitle" placeholder="Name" name="name" required>
-                    <input type="email" class="contactEmail" placeholder="Email" name="email" required>
-                    <textarea class="contactMessage" placeholder="Message" name="message" rows="1" required
-                        oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></textarea>
-                </span>
-                <button type="submit" class="contactButton">SEND</button>
-            </form>
         </section>
     </div>
 </body>
