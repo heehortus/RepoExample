@@ -1,16 +1,19 @@
 // 장바구니 데이터, 객체
 const cart = {};
 
-// HTML 요소 참조
+// 메뉴 추가/삭제
 const menuContainer = document.querySelector('.menu-container');
 const selectedCount = document.querySelector('#selected-count');
 const totalPrice = document.querySelector('#total-price');
 const cartItems = document.querySelector('#cart-items');
 
-// 메뉴 컨테이너 클릭 이벤트 추가
+// 탭 기능
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+// 메뉴 추가/삭제
 menuContainer.addEventListener('click', (event) => {
     
-    // 메뉴 아이템이나 그 자식 요소를 클릭했는지 확인
     const menuItem = event.target.closest('.menu-item');
     
     if (menuItem) {
@@ -29,7 +32,7 @@ menuContainer.addEventListener('click', (event) => {
     }
 });
 
-// 수량 조절 버튼 이벤트 (이벤트 위임)
+
 cartItems.addEventListener('click', (event) => {
     const name = event.target.getAttribute('data-name');
     
@@ -55,7 +58,7 @@ cartItems.addEventListener('click', (event) => {
         }
         
         updateCart();
-        
+
     } else if (event.target.classList.contains('delete-btn')) {
         // 삭제 버튼 클릭
         // 해당 메뉴의 선택 효과도 제거
@@ -71,6 +74,21 @@ cartItems.addEventListener('click', (event) => {
     }
     
     console.log(cart);
+});
+
+// 탭 기능
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        
+        // 모든 탭 버튼과 컨텐츠에서 active 제거
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+        
+        // 클릭된 탭 버튼과 해당 컨텐츠에 active 추가
+        button.classList.add('active');
+        document.getElementById(category).classList.add('active');
+    });
 });
 
 function addToCart(name, price, menuItem) {

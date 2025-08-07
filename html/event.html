@@ -4,120 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>카페 키오스크</title>
-    <link rel="stylesheet" href="../css/kiosk.css">
+    <link rel="stylesheet" href="../css//kiosk.css">
 </head>
 <body>
     <div class="kiosk-container">
         <header class="kiosk-header">
-            <h1>어서오세요! Cafe 정원입니다🌿</h1>
+            <h1>CAFE KIOSK</h1>
             <p>메뉴를 선택해주세요</p>
         </header>
 
         <main class="menu-container">
-            <!-- 커피 메뉴 -->
-            <section class="menu-section">
-                <h2 class="menu-category">☕ 커피</h2>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h3>아메리카노</h3>
-                            <p>진한 에스프레소에 물을 넣은 기본 커피</p>
-                        </div>
-                        <div class="item-price">3,500원</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h3>카페라떼</h3>
-                            <p>부드러운 우유와 에스프레소의 조화</p>
-                        </div>
-                        <div class="item-price">4,500원</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h3>카푸치노</h3>
-                            <p>풍성한 우유 거품이 올라간 커피</p>
-                        </div>
-                        <div class="item-price">4,800원</div>
-                    </div>
-                </div>
-            </section>
+            <!-- 탭 버튼들 -->
+            <div class="tab-buttons">
+                <button class="tab-btn active" data-category="coffee">☕ 커피</button>
+                <button class="tab-btn" data-category="tea">🍃 차</button>
+                <button class="tab-btn" data-category="dessert">🧁 디저트</button>
+            </div>
 
-            <!-- 차 메뉴 -->
-            <section class="menu-section">
-                <h2 class="menu-category">🍃 차</h2>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h3>녹차</h3>
-                            <p>은은한 향이 일품인 전통 녹차</p>
+            <!-- 탭 컨텐츠들 -->
+            <div class="tab-contents">
+                <!-- 커피 탭 -->
+                <div class="tab-content active" id="coffee">
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3>아메리카노</h3>
+                                <p>진한 에스프레소에 물을 넣은 기본 커피</p>
+                            </div>
+                            <div class="item-price">3,500원</div>
                         </div>
-                        <div class="item-price">3,000원</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h3>얼그레이</h3>
-                            <p>베르가못 향이 특별한 영국 홍차</p>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3>카페라떼</h3>
+                                <p>부드러운 우유와 에스프레소의 조화</p>
+                            </div>
+                            <div class="item-price">4,500원</div>
                         </div>
-                        <div class="item-price">3,800원</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h3>캐모마일</h3>
-                            <p>마음을 편안하게 해주는 허브차</p>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3>카푸치노</h3>
+                                <p>풍성한 우유 거품이 올라간 커피</p>
+                            </div>
+                            <div class="item-price">4,800원</div>
                         </div>
-                        <div class="item-price">4,200원</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h3>페퍼민트</h3>
-                            <p>상쾌한 민트 향의 허브차</p>
-                        </div>
-                        <div class="item-price">4,000원</div>
                     </div>
                 </div>
-            </section>
 
-            <!-- 디저트 메뉴 -->
-            <section class="menu-section">
-                <h2 class="menu-category">🧁 디저트</h2>
-                <div class="menu-items">
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h3>치즈케이크</h3>
-                            <p>진한 치즈의 맛이 일품인 케이크</p>
+                <!-- 차 탭 -->
+                <div class="tab-content" id="tea">
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3>녹차</h3>
+                                <p>은은한 향이 일품인 전통 녹차</p>
+                            </div>
+                            <div class="item-price">3,000원</div>
                         </div>
-                        <div class="item-price">6,500원</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h3>초콜릿 머핀</h3>
-                            <p>촉촉하고 달콤한 초콜릿 머핀</p>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3>얼그레이</h3>
+                                <p>베르가못 향이 특별한 영국 홍차</p>
+                            </div>
+                            <div class="item-price">3,800원</div>
                         </div>
-                        <div class="item-price">4,500원</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h3>마카롱</h3>
-                            <p>다채로운 색상의 프랑스 전통 과자</p>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3>캐모마일</h3>
+                                <p>마음을 편안하게 해주는 허브차</p>
+                            </div>
+                            <div class="item-price">4,200원</div>
                         </div>
-                        <div class="item-price">3,200원</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h3>티라미수</h3>
-                            <p>이탈리아의 대표적인 디저트</p>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3>페퍼민트</h3>
+                                <p>상쾌한 민트 향의 허브차</p>
+                            </div>
+                            <div class="item-price">4,000원</div>
                         </div>
-                        <div class="item-price">7,800원</div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="item-info">
-                            <h3>크로플</h3>
-                            <p>바삭한 크루아상 와플</p>
-                        </div>
-                        <div class="item-price">5,900원</div>
                     </div>
                 </div>
-            </section>
+
+                <!-- 디저트 탭 -->
+                <div class="tab-content" id="dessert">
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3>치즈케이크</h3>
+                                <p>진한 치즈의 맛이 일품인 케이크</p>
+                            </div>
+                            <div class="item-price">6,500원</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3>초콜릿 머핀</h3>
+                                <p>촉촉하고 달콤한 초콜릿 머핀</p>
+                            </div>
+                            <div class="item-price">4,500원</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3>마카롱</h3>
+                                <p>다채로운 색상의 프랑스 전통 과자</p>
+                            </div>
+                            <div class="item-price">3,200원</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3>티라미수</h3>
+                                <p>이탈리아의 대표적인 디저트</p>
+                            </div>
+                            <div class="item-price">7,800원</div>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-info">
+                                <h3>크로플</h3>
+                                <p>바삭한 크루아상 와플</p>
+                            </div>
+                            <div class="item-price">5,900원</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
 
         <footer class="kiosk-footer">
@@ -127,15 +134,17 @@
                         <span class="cart-icon">🛒</span>
                         <span>장바구니: <span id="selected-count">0</span>개</span>
                     </div>
-                    <!-- 카드 아이템 자동 추가 -->
-                    <div class="cart-items" id="cart-items"></div>
+                    <div class="cart-items" id="cart-items">
+                    <!-- 장바구니 아이템들이 여기에 동적으로 추가됨 -->
+                    </div>
                     <div class="total-section">
                         <span class="total-price">총 금액: <span id="total-price">0</span>원</span>
                     </div>
                 </div>
-             </div>
+            </div>
         </footer>
     </div>
+
     <script src="../js/kiosk.js"></script>
 </body>
 </html>
