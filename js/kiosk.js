@@ -6,6 +6,7 @@ const menuContainer = document.querySelector('.menu-container');
 const selectedCount = document.querySelector('#selected-count');
 const totalPrice = document.querySelector('#total-price');
 const cartItems = document.querySelector('#cart-items');
+const orderBtn = document.querySelector('.order-btn');
 
 // 탭 기능
 const tabButtons = document.querySelectorAll('.tab-btn');
@@ -90,6 +91,25 @@ tabButtons.forEach(button => {
         document.getElementById(category).classList.add('active');
     });
 });
+
+// 주문하기 버튼
+orderBtn.addEventListener('click', (event) => {
+    alert('주문이 완료되었습니다.');
+
+    // 장바구니 비우기
+    for (const name in cart) {
+        delete cart[name];
+    }
+    
+    // 모든 메뉴 아이템의 선택 효과 제거
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach(item => {
+        item.classList.remove('selected');
+    });
+    
+    // 장바구니 UI 업데이트
+    updateCart();
+})
 
 function addToCart(name, price, menuItem) {
     if (cart[name]) {
