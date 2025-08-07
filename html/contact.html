@@ -1,77 +1,143 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HORTUS</title>
     <!-- 파비콘 -->
-    <link rel="icon" href="/source/favicon/favicon-32x32.ico" type="image/x-icon">
+    <link
+      rel="icon"
+      href="/source/favicon/favicon-32x32.ico"
+      type="image/x-icon"
+    />
     <!-- 공통 CSS -->
-    <link rel="stylesheet" href="../css/common.css">
-    <link rel="stylesheet" href="../css/cursor.css">
-    <link rel="stylesheet" href="../css/font.css">
-    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/common.css" />
+    <link rel="stylesheet" href="../css/cursor.css" />
+    <link rel="stylesheet" href="../css/font.css" />
+    <link rel="stylesheet" href="../css/nav.css" />
     <!-- 개별 CSS -->
-    <link rel="stylesheet" href="../css/contact/contact.css">
+    <link rel="stylesheet" href="../css/contact/contact.css" />
 
     <!-- 공통 JS-->
     <script src="../js/cursor.js"></script>
-    
+
     <!-- 메일 전송 라이브러리-->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    ></script>
     <!-- 폼 제출 함수-->
     <script type="text/javascript">
-        (function () {
-            // emailJS 유저 ID
-            emailjs.init("qcTpKKgfnya6vZp22");
-        })();
+      (function () {
+        // emailJS 유저 ID
+        emailjs.init("qcTpKKgfnya6vZp22");
+      })();
     </script>
     <script type="text/javascript">
-        function sendEmail(e) {
-            e.preventDefault(); // 기본 동작 방지
-            // 폼 요소 가져오기
-            const form = document.getElementById('contactForm');
+      function sendEmail(e) {
+        e.preventDefault(); // 기본 동작 방지
+        // 폼 요소 가져오기
+        const form = document.getElementById("contactForm");
 
-            emailjs.sendForm('service_2cnxu27', 'ContactUs', form)
-                .then(() => {
-                    console.log('SUCCESS!');
-                    alert('메일이 성공적으로 전송되었습니다!'); // 성공 메시지
-                    form.reset();
-                }, (error) => {
-                    console.log('FAILED...', error);
-                    alert('메일 전송에 실패했습니다.'); // 실패 메시지
-                });
-        }
+        emailjs.sendForm("service_2cnxu27", "ContactUs", form).then(
+          () => {
+            console.log("SUCCESS!");
+            alert("메일이 성공적으로 전송되었습니다!"); // 성공 메시지
+            form.reset();
+          },
+          (error) => {
+            console.log("FAILED...", error);
+            alert("메일 전송에 실패했습니다."); // 실패 메시지
+          }
+        );
+      }
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="custom-cursor" id="cursor"></div>
     <nav class="main-nav">
-        <div class="nav-wrapper">
-            <div class="logo">
-                <a href="about.html" class="nav-home">HORTUS</a>
-            </div>
-            <div class="menu">
-                <a href="about.html" class="nav-link">About</a>
-                <a href="project.html" class="nav-link active">Project</a>
-                <a href="contact.html" class="nav-link">Contact</a>
-            </div>
+      <div class="nav-wrapper">
+        <div class="logo">
+          <a href="about.html" class="nav-home">HORTUS</a>
         </div>
+        <div class="menu">
+          <a href="about.html" class="nav-link">About</a>
+          <a href="project.html" class="nav-link active">Project</a>
+          <a href="contact.html" class="nav-link">Contact</a>
+        </div>
+      </div>
     </nav>
-    <section class="contact">
-        <div class="contactWrapper">
-            <h2 class="contactName">Contact Me</h2>
-            <p class="contactSubtitle">궁금한 점이나 협업 제안이 있다면 언제든지 연락주세요!</p>
+    <div class="container">
+      <div class="contact">
+        <div class="contact-left">
+          <div class="introtWrapper">
+            <h2 class="introName">Contact Me</h2>
+            <p class="introSubtitle">궁금한 점이나 협업 제안이 있다면 언제든지 연락주세요!</p>
+          </div>
+          <div class="linkWrapper">
+            <a href="https://www.instagram.com/hee.hortus/" target="_blank" class="linkItem">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+              >
+                <path
+                  d="M10.4 2.66669H21.6C25.8667 2.66669 29.3333 6.13335 29.3333 10.4V21.6C29.3333 23.651 28.5186 25.618 27.0683 27.0683C25.618 28.5186 23.651 29.3334 21.6 29.3334H10.4C6.13334 29.3334 2.66667 25.8667 2.66667 21.6V10.4C2.66667 8.34901 3.48143 6.38201 4.93171 4.93173C6.38199 3.48145 8.349 2.66669 10.4 2.66669ZM10.1333 5.33335C8.8603 5.33335 7.6394 5.83907 6.73923 6.73924C5.83905 7.63942 5.33334 8.86031 5.33334 10.1334V21.8667C5.33334 24.52 7.48 26.6667 10.1333 26.6667H21.8667C23.1397 26.6667 24.3606 26.161 25.2608 25.2608C26.161 24.3606 26.6667 23.1397 26.6667 21.8667V10.1334C26.6667 7.48002 24.52 5.33335 21.8667 5.33335H10.1333ZM23 7.33335C23.442 7.33335 23.866 7.50895 24.1785 7.82151C24.4911 8.13407 24.6667 8.55799 24.6667 9.00002C24.6667 9.44205 24.4911 9.86597 24.1785 10.1785C23.866 10.4911 23.442 10.6667 23 10.6667C22.558 10.6667 22.1341 10.4911 21.8215 10.1785C21.5089 9.86597 21.3333 9.44205 21.3333 9.00002C21.3333 8.55799 21.5089 8.13407 21.8215 7.82151C22.1341 7.50895 22.558 7.33335 23 7.33335ZM16 9.33335C17.7681 9.33335 19.4638 10.0357 20.714 11.286C21.9643 12.5362 22.6667 14.2319 22.6667 16C22.6667 17.7681 21.9643 19.4638 20.714 20.7141C19.4638 21.9643 17.7681 22.6667 16 22.6667C14.2319 22.6667 12.5362 21.9643 11.286 20.7141C10.0357 19.4638 9.33334 17.7681 9.33334 16C9.33334 14.2319 10.0357 12.5362 11.286 11.286C12.5362 10.0357 14.2319 9.33335 16 9.33335ZM16 12C14.9391 12 13.9217 12.4214 13.1716 13.1716C12.4214 13.9217 12 14.9392 12 16C12 17.0609 12.4214 18.0783 13.1716 18.8284C13.9217 19.5786 14.9391 20 16 20C17.0609 20 18.0783 19.5786 18.8284 18.8284C19.5786 18.0783 20 17.0609 20 16C20 14.9392 19.5786 13.9217 18.8284 13.1716C18.0783 12.4214 17.0609 12 16 12Z"
+                  fill="black"
+                />
+              </svg>
+              hee.hortus
+            </a>
+            <a href="mailto:hee.hortus@gmail.com" target="_blank" class="linkItem">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 32 32"
+                fill="none"
+              >
+                <path
+                  d="M5.33334 26.6666C4.60001 26.6666 3.97245 26.4058 3.45067 25.884C2.92889 25.3622 2.66756 24.7342 2.66667 24V7.99998C2.66667 7.26665 2.92801 6.63909 3.45067 6.11731C3.97334 5.59553 4.60089 5.3342 5.33334 5.33331H26.6667C27.4 5.33331 28.028 5.59465 28.5507 6.11731C29.0733 6.63998 29.3342 7.26754 29.3333 7.99998V24C29.3333 24.7333 29.0725 25.3613 28.5507 25.884C28.0289 26.4066 27.4009 26.6675 26.6667 26.6666H5.33334ZM16 17.3333L5.33334 10.6666V24H26.6667V10.6666L16 17.3333ZM16 14.6666L26.6667 7.99998H5.33334L16 14.6666ZM5.33334 10.6666V7.99998V24V10.6666Z"
+                  fill="black"
+                />
+              </svg>
+              hee.hortus@gmail.com
+            </a>
+          </div>
         </div>
-        <form id="contactForm" onsubmit="sendEmail(event)">
+
+        <div class="contact-right">
+          <form id="contactForm" onsubmit="sendEmail(event)">
             <span class="contactInput">
-                <input type="text" class="contactTitle" placeholder="Name" name="name" required>
-                <input type="email" class="contactEmail" placeholder="Email" name="email" required>
-                <textarea class="contactMessage" placeholder="Message" name="message" rows="1" required
-                    oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'></textarea>
+              <input
+                type="text"
+                class="contactTitle"
+                placeholder="Name"
+                name="name"
+                required
+              />
+              <input
+                type="email"
+                class="contactEmail"
+                placeholder="Email"
+                name="email"
+                required
+              />
+              <textarea
+                class="contactMessage"
+                placeholder="Message"
+                name="message"
+                rows="1"
+                required
+                oninput='this.style.height = ""; this.style.height = this.scrollHeight + "px"'
+              ></textarea>
             </span>
             <button type="submit" class="contactButton">SEND</button>
-        </form>
-    </section>
-</body>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

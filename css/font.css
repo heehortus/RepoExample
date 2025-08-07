@@ -50,7 +50,7 @@ a {
 
 @media screen and (max-width: 767px) {
     h1 {
-        font-size: 32px;
+        font-size: 40px;
     }
 
     h2 {
@@ -64,7 +64,7 @@ a {
 
     p,
     a {
-        font-size: 16px;
+        font-size: 20px;
     }
 
 }
