@@ -1,8 +1,8 @@
 // kiosk.js
 
 // import Cart, UI
-import { CartManager } from '../js/cartData.js';
-import { UIManager } from '../js/cartUI.js';
+import { CartManager } from "../js/cartData.js";
+import { UIManager } from "../js/cartUI.js";
 
 // 메뉴 데이터 정의
 const menuData = {
@@ -89,7 +89,11 @@ const menuData = {
 /**
  * 로컬 스토리지에 메뉴 데이터가 없으면 초기 데이터를 저장합니다.
  */
-
+const initializeMenuData = () => {
+  if (!localStorage.getItem("menuData")) {
+    localStorage.setItem("menuData", JSON.stringify(menuData));
+  }
+};
 
 /**
  * 주어진 카테고리와 아이템 목록을 바탕으로 메뉴판에 아이템을 동적으로 추가합니다.
@@ -114,7 +118,7 @@ const createMenuItems = (category, items) => {
   });
 };
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   initializeMenuData(); // 메뉴 데이터 초기화
   const allMenu = JSON.parse(localStorage.getItem("menuData"));
 
