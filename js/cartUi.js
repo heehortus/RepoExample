@@ -1,5 +1,5 @@
 // cartUI.js
-import { CartManager } from '../js/cartData.js';
+import { CartManager } from "../js/cartData.js";
 
 export class UIManager {
   constructor(cartManager, allMenu) {
@@ -12,42 +12,42 @@ export class UIManager {
   }
 
   initElements() {
-    this.menuContainer = document.querySelector('.menu-container');
-    this.cartItems = document.querySelector('#cart-items');
-    this.orderBtn = document.querySelector('.order-btn');
-    this.tabButtons = document.querySelectorAll('.tab-btn');
-    this.tabContents = document.querySelectorAll('.tab-content');
-    this.selectedCount = document.querySelector('#selected-count');
-    this.totalPrice = document.querySelector('#total-price');
+    this.menuContainer = document.querySelector(".menu-container");
+    this.cartItems = document.querySelector("#cart-items");
+    this.orderBtn = document.querySelector(".order-btn");
+    this.tabButtons = document.querySelectorAll(".tab-btn");
+    this.tabContents = document.querySelectorAll(".tab-content");
+    this.selectedCount = document.querySelector("#selected-count");
+    this.totalPrice = document.querySelector("#total-price");
   }
 
   initEventListeners() {
-    this.menuContainer.addEventListener('click', (event) => {
+    this.menuContainer.addEventListener("click", (event) => {
       this.handleMenuClick(event);
     });
 
-    this.cartItems.addEventListener('click', (event) => {
+    this.cartItems.addEventListener("click", (event) => {
       this.handleCartItemClick(event);
     });
 
-    this.orderBtn.addEventListener('click', () => {
+    this.orderBtn.addEventListener("click", () => {
       this.handleOrderClick();
     });
 
-    this.tabButtons.forEach(button => {
-      button.addEventListener('click', () => {
+    this.tabButtons.forEach((button) => {
+      button.addEventListener("click", () => {
         this.handleTabClick(button);
       });
     });
   }
 
   handleMenuClick(event) {
-    const menuItem = event.target.closest('.menu-item');
+    const menuItem = event.target.closest(".menu-item");
     if (menuItem) {
       const id = menuItem.dataset.id;
       const item = this.findMenuItemById(id);
       if (item) {
-        if (menuItem.classList.contains('selected')) {
+        if (menuItem.classList.contains("selected")) {
           this.cartManager.removeFromCart(id);
         } else {
           this.cartManager.addToCart(id, item.name, item.price);
@@ -59,38 +59,44 @@ export class UIManager {
   }
 
   handleCartItemClick(event) {
-    const id = event.target.closest('.cart-item').dataset.id; // 이벤트 위임 수정
+    const targetElement = event.target.closest("button, .cart-item");
+    if (!targetElement) return;
+
+    const id =
+      targetElement.dataset.id || event.target.closest(".cart-item").dataset.id;
+    if (!id) return;
+
     const targetClassList = event.target.classList;
 
-    if (targetClassList.contains('plus-btn')) {
+    if (targetClassList.contains("plus-btn")) {
       this.cartManager.updateItemCount(id, 1);
-    } else if (targetClassList.contains('minus-btn')) {
+    } else if (targetClassList.contains("minus-btn")) {
       this.cartManager.updateItemCount(id, -1);
-    } else if (targetClassList.contains('delete-btn')) {
+    } else if (targetClassList.contains("delete-btn")) {
       this.cartManager.removeFromCart(id);
     }
-    
+
     this.syncMenuSelectedEffects();
     this.updateCartUI();
   }
 
   handleOrderClick() {
     if (this.cartManager.getTotalCount() === 0) {
-      alert('메뉴를 선택해주세요!');
+      alert("메뉴를 선택해주세요!");
       return;
     }
-    alert('주문이 완료되었습니다.');
+    alert("주문이 완료되었습니다.");
     this.cartManager.clearCart();
     this.syncMenuSelectedEffects();
     this.updateCartUI();
   }
 
   handleTabClick(button) {
-    const category = button.getAttribute('data-category');
-    this.tabButtons.forEach(btn => btn.classList.remove('active'));
-    this.tabContents.forEach(content => content.classList.remove('active'));
-    button.classList.add('active');
-    document.getElementById(category).classList.add('active');
+    const category = button.getAttribute("data-category");
+    this.tabButtons.forEach((btn) => btn.classList.remove("active"));
+    this.tabContents.forEach((content) => content.classList.remove("active"));
+    button.classList.add("active");
+    document.getElementById(category).classList.add("active");
   }
 
   /**
@@ -98,14 +104,14 @@ export class UIManager {
    */
   syncMenuSelectedEffects() {
     const cart = this.cartManager.getCart();
-    const menuItems = document.querySelectorAll('.menu-item');
-    
-    menuItems.forEach(item => {
+    const menuItems = document.querySelectorAll(".menu-item");
+
+    menuItems.forEach((item) => {
       const id = item.dataset.id;
       if (cart[id]) {
-        item.classList.add('selected');
+        item.classList.add("selected");
       } else {
-        item.classList.remove('selected');
+        item.classList.remove("selected");
       }
     });
   }
@@ -115,12 +121,12 @@ export class UIManager {
    */
   updateCartUI() {
     const cart = this.cartManager.getCart();
-    this.cartItems.innerHTML = '';
-    
+    this.cartItems.innerHTML = "";
+
     for (const id in cart) {
       const { name, price, count } = cart[id];
-      const cartItem = document.createElement('div');
-      cartItem.className = 'cart-item';
+      const cartItem = document.createElement("div");
+      cartItem.className = "cart-item";
       cartItem.dataset.id = id;
       cartItem.innerHTML = `
         <div class="item-controls">
@@ -133,9 +139,11 @@ export class UIManager {
       `;
       this.cartItems.appendChild(cartItem);
     }
-    
+
     this.selectedCount.textContent = this.cartManager.getTotalCount();
-    this.totalPrice.textContent = this.cartManager.getTotalPrice().toLocaleString();
+    this.totalPrice.textContent = this.cartManager
+      .getTotalPrice()
+      .toLocaleString();
   }
 
   /**
@@ -145,7 +153,9 @@ export class UIManager {
    */
   findMenuItemById(id) {
     for (const category in this.allMenu) {
-      const item = this.allMenu[category].find(menuItem => menuItem.id === id);
+      const item = this.allMenu[category].find(
+        (menuItem) => menuItem.id === id
+      );
       if (item) return item;
     }
     return null;
