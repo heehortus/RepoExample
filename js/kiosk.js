@@ -1,158 +1,133 @@
-// 장바구니 데이터, 객체
-const cart = {};
+// kiosk.js
 
-// 메뉴 추가/삭제
-const menuContainer = document.querySelector('.menu-container');
-const selectedCount = document.querySelector('#selected-count');
-const totalPrice = document.querySelector('#total-price');
-const cartItems = document.querySelector('#cart-items');
-const orderBtn = document.querySelector('.order-btn');
+// import Cart, UI
+import { CartManager } from '../js/cartData.js';
+import { UIManager } from '../js/cartUI.js';
 
-// 탭 기능
-const tabButtons = document.querySelectorAll('.tab-btn');
-const tabContents = document.querySelectorAll('.tab-content');
+// 메뉴 데이터 정의
+const menuData = {
+  coffee: [
+    {
+      id: "coffee-1",
+      name: "아메리카노",
+      description: "진한 에스프레소에 물을 넣은 기본 커피",
+      price: 3500,
+    },
+    {
+      id: "coffee-2",
+      name: "카페라떼",
+      description: "부드러운 우유와 에스프레소의 조화",
+      price: 4500,
+    },
+    {
+      id: "coffee-3",
+      name: "카푸치노",
+      description: "풍성한 우유 거품이 올라간 커피",
+      price: 4800,
+    },
+  ],
+  tea: [
+    {
+      id: "tea-1",
+      name: "녹차",
+      description: "은은한 향이 일품인 전통 녹차",
+      price: 3000,
+    },
+    {
+      id: "tea-2",
+      name: "얼그레이",
+      description: "베르가못 향이 특별한 영국 홍차",
+      price: 3800,
+    },
+    {
+      id: "tea-3",
+      name: "캐모마일",
+      description: "마음을 편안하게 해주는 허브차",
+      price: 4200,
+    },
+    {
+      id: "tea-4",
+      name: "페퍼민트",
+      description: "상쾌한 민트 향의 허브차",
+      price: 4000,
+    },
+  ],
+  dessert: [
+    {
+      id: "dessert-1",
+      name: "치즈케이크",
+      description: "진한 치즈의 맛이 일품인 케이크",
+      price: 6500,
+    },
+    {
+      id: "dessert-2",
+      name: "초콜릿 머핀",
+      description: "촉촉하고 달콤한 초콜릿 머핀",
+      price: 4500,
+    },
+    {
+      id: "dessert-3",
+      name: "마카롱",
+      description: "다채로운 색상의 프랑스 전통 과자",
+      price: 3200,
+    },
+    {
+      id: "dessert-4",
+      name: "티라미수",
+      description: "이탈리아의 대표적인 디저트",
+      price: 7800,
+    },
+    {
+      id: "dessert-5",
+      name: "크로플",
+      description: "바삭한 크루아상 와플",
+      price: 5900,
+    },
+  ],
+};
 
-// 메뉴 추가/삭제
-menuContainer.addEventListener('click', (event) => {
-    
-    const menuItem = event.target.closest('.menu-item');
-    
-    if (menuItem) {
-        const name = menuItem.querySelector('h3').textContent;
-        const priceText = menuItem.querySelector('.item-price').textContent;
-        const price = parseInt(priceText.replace(/[^0-9]/g, ''));
+/**
+ * 로컬 스토리지에 메뉴 데이터가 없으면 초기 데이터를 저장합니다.
+ */
+const initializeMenuData = () => {
+  if (!localStorage.getItem("menuData")) {
+    localStorage.setItem("menuData", JSON.stringify(menuData));
+  }
+};
 
-        if (menuItem.classList.contains('selected')) {
-            removeFromCart(name, menuItem);
-        } else {
-            addToCart(name, price, menuItem);
-        }
+/**
+ * 주어진 카테고리와 아이템 목록을 바탕으로 메뉴판에 아이템을 동적으로 추가합니다.
+ * @param {string} category - 메뉴 카테고리 (예: 'coffee')
+ * @param {Array<Object>} items - 메뉴 아이템 객체 배열
+ */
+const createMenuItems = (category, items) => {
+  const menuContainer = document.querySelector(`#${category} .menu-items`);
+  menuContainer.innerHTML = "";
+  items.forEach((item) => {
+    const menuItemDiv = document.createElement("div");
+    menuItemDiv.classList.add("menu-item");
+    menuItemDiv.dataset.id = item.id; // HTML 엘리먼트에 고유 ID를 저장
+    menuItemDiv.innerHTML = `
+      <div class="item-info">
+        <h3>${item.name}</h3>
+        <p>${item.description}</p>
+      </div>
+      <div class="item-price">${item.price.toLocaleString()}원</div>
+    `;
+    menuContainer.appendChild(menuItemDiv);
+  });
+};
 
-        updateCart();
-        console.log(cart);
-    }
+document.addEventListener('DOMContentLoaded', () => {
+  initializeMenuData(); // 메뉴 데이터 초기화
+  const allMenu = JSON.parse(localStorage.getItem("menuData"));
+
+  // 각 카테고리별 메뉴 생성
+  for (const category in allMenu) {
+    createMenuItems(category, allMenu[category]);
+  }
+
+  // 매니저와 UI 초기화. UIManager에 모든 메뉴 데이터를 전달합니다.
+  const cartManager = new CartManager();
+  const uiManager = new UIManager(cartManager, allMenu);
 });
-
-
-cartItems.addEventListener('click', (event) => {
-    const name = event.target.getAttribute('data-name');
-    
-    if (event.target.classList.contains('plus-btn')) {
-        // + 버튼 클릭
-        cart[name].count++;
-        updateCart();
-    } else if (event.target.classList.contains('minus-btn')) {
-        // - 버튼 클릭
-        cart[name].count--;
-        
-        // 수량이 0이 되면 장바구니에서 제거
-        if (cart[name].count <= 0) {
-            // 해당 메뉴의 선택 효과도 제거
-            const menuItems = document.querySelectorAll('.menu-item');
-            menuItems.forEach(item => {
-                if (item.querySelector('h3').textContent === name) {
-                    item.classList.remove('selected');
-                }
-            });
-            
-            delete cart[name];
-        }
-        
-        updateCart();
-
-    } else if (event.target.classList.contains('delete-btn')) {
-        // 삭제 버튼 클릭
-        // 해당 메뉴의 선택 효과도 제거
-        const menuItems = document.querySelectorAll('.menu-item');
-        menuItems.forEach(item => {
-            if (item.querySelector('h3').textContent === name) {
-                item.classList.remove('selected');
-            }
-        });
-        
-        delete cart[name];
-        updateCart();
-    }
-    
-    console.log(cart);
-});
-
-// 탭 기능
-tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
-        
-        // 모든 탭 버튼과 컨텐츠에서 active 제거
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        tabContents.forEach(content => content.classList.remove('active'));
-        
-        // 클릭된 탭 버튼과 해당 컨텐츠에 active 추가
-        button.classList.add('active');
-        document.getElementById(category).classList.add('active');
-    });
-});
-
-// 주문하기 버튼
-orderBtn.addEventListener('click', (event) => {
-    alert('주문이 완료되었습니다.');
-
-    // 장바구니 비우기
-    for (const name in cart) {
-        delete cart[name];
-    }
-    
-    // 모든 메뉴 아이템의 선택 효과 제거
-    const menuItems = document.querySelectorAll('.menu-item');
-    menuItems.forEach(item => {
-        item.classList.remove('selected');
-    });
-    
-    // 장바구니 UI 업데이트
-    updateCart();
-})
-
-function addToCart(name, price, menuItem) {
-    if (cart[name]) {
-        cart[name].count++;
-    } else {
-        cart[name] = { price, count: 1 };
-    }
-    menuItem.classList.add('selected');
-}
-
-function removeFromCart(name, menuItem) {
-     if (cart[name]) {
-        delete cart[name];
-        menuItem.classList.remove('selected');
-    }
-}
-
-function updateCart() {
-    let total = 0;
-    let totalCount = 0;
-
-    /* 초기 비우기 */
-    cartItems.innerHTML = '';
-
-    for (const name in cart) {
-        const { price, count } = cart[name];
-        total += price * count;
-        totalCount += count;
-
-        const cartItem = document.createElement('div');
-        cartItem.className = 'cart-item';
-        cartItem.innerHTML = `
-            <button class="btn plus-btn" data-name="${name}">+</button>
-            <span class="item-details">${name} x ${count}</span>
-            <button class="btn minus-btn" data-name="${name}">-</button>
-            <span class="item-price">${(price * count).toLocaleString()}원</span>
-            <button class="delete-btn" data-name="${name}">삭제</button>
-        `;
-
-        cartItems.appendChild(cartItem);
-    }
-
-    // .toLocaleString() 라는 메서드는 문화권에 대응해서 우리나라 3자리수 콤마를 넣어주는 함수
-    selectedCount.textContent = totalCount;
-    totalPrice.textContent = total.toLocaleString();
-}

@@ -1,0 +1,10 @@
+* {
+        box-sizing: border-box;
+        outline: 1px solid red;
+      }
+
+      .swiper {
+        width: 100%;
+        /* 부모를 따라가는 상대적인 사이즈 */
+        height: 500px;
+      }
