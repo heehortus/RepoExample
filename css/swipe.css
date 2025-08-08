@@ -32,8 +32,6 @@ body {
 
 /* 개별 슬라이드 스타일 */
 .swiper-slide {
-  width: 70vw; /* 슬라이드 너비를 화면 너비의 70%로 설정 (원하는대로 조절) */
-  min-height: 500px;
   background-color: #ffffff;
   display: flex;
   justify-content: center;
@@ -44,7 +42,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   padding: 50px;
   border-radius: 15px;
 }
