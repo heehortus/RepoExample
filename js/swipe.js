@@ -1,9 +1,13 @@
 var swiper = new Swiper(".mySwiper", {
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+  slidesPerView: "auto",
+  loop: true,
+  centeredSlides: true,
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
   },
-  pagination: {
-    el: ".swiper-pagination",
+  scrollbar: {
+    el: ".swiper-scrollbar",
+    hide: true,
   },
 });

@@ -1,10 +1,75 @@
-* {
-        box-sizing: border-box;
-        outline: 1px solid red;
-      }
+/* 기본 스타일 및 중앙 정렬 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+}
 
-      .swiper {
-        width: 100%;
-        /* 부모를 따라가는 상대적인 사이즈 */
-        height: 500px;
-      }
+.work-section {
+  max-width: 1440px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
+/* Swiper 컨테이너 */
+.swiper {
+  width: 100%;
+  padding: 0 5vw; /* 좌우 패딩을 뷰포트 너비에 따라 설정하여 옆 슬라이드가 보이게 함 */
+}
+
+.swiper-wrapper {
+  align-items: center;
+}
+
+/* 개별 슬라이드 스타일 */
+.swiper-slide {
+  width: 70vw; /* 슬라이드 너비를 화면 너비의 70%로 설정 (원하는대로 조절) */
+  min-height: 500px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 50px;
+  border-radius: 15px;
+}
+
+/* 텍스트 정보 영역 */
+.info {
+  font-size: 40px;
+  text-align: left;
+  flex: 1;
+}
+
+.date {
+  font-size: 30px;
+}
+
+.description {
+  font-size: 20px;
+}
+
+/* 이미지 플레이스홀더 */
+.image-placeholder {
+  width: 500px; /* 고정 너비 */
+  height: 400px;
+  background-color: #e0e0e0;
+  border-radius: 15px;
+  flex-shrink: 0;
+  margin-left: 50px;
+}
