@@ -1,8 +1,8 @@
 // kiosk.js
 
 // import Cart, UI
-import { CartManager } from "../js/cartData.js";
-import { UIManager } from "../js/cartUi.js";
+import { CartManager } from "/js/cartData.js";
+import { UIManager } from "/js/cartUi.js";
 
 // 메뉴 데이터 정의
 const menuData = {
